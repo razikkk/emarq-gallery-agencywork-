@@ -4,41 +4,40 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Gallery() {
   const items = [
-      { type: "video", category: "automotive", src: "./autovideo.mp4" },
-      { type: "video", category: "automotive", src: "./copy_8CC3A021-9579-4D09-B5BD-3E77A68CD59F.mov" },
-      { type: "video", category: "automotive", src: "./copy_2529EC35-C780-4539-B28A-3872BE4A9C10.mov" },
-      { type: "video", category: "automotive", src: "./copy_F8920F0A-EE08-4671-845F-36FCD2120968.mov" },
-      { type: "image", category: "automotive", src: "./DSC01987 6.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02059 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02062 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02065 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02067 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02088 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02095 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02098 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02107 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02110 4.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02112 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02115 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02119 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02136 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02142 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02150 4.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02160 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02162 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02261.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02345.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02372 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02415 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02427 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02432 3.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02452 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02486 4.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02811.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02818.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02913.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02922 2.jpg" },
-      { type: "image", category: "automotive", src: "./DSC02415 2.jpg" },
+      { type: "video", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/video/upload/f_auto,q_auto/v1758646805/copy_F8920F0A-EE08-4671-845F-36FCD2120968_bflq7h.mov" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646799/DSC02922_2_uowiyc.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646799/DSC02818_ggchae.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646799/DSC02913_yx6koq.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646798/DSC02811_yl5xoo.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646798/DSC02486_4_xtrnkw.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646797/DSC02452_2_rhyhig.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646797/DSC02372_2_jzip98.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646797/DSC02432_3_mnkuaa.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646796/DSC02415_2_lxbgqn.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646797/DSC02427_3_s8rxjd.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646794/DSC02162_3_f6s0pi.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646794/DSC02261_ytgx3u.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646794/DSC02345_kqh88j.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646794/DSC02160_3_efkzkm.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646793/DSC02150_4_ca9e0n.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646792/DSC02136_2_dcby9o.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646793/DSC02154_3_ntaluz.jpg" },
+      { type: "video", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/video/upload/f_auto,q_auto/v1758646791/copy_8CC3A021-9579-4D09-B5BD-3E77A68CD59F_omqopp.mov" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646791/DSC02115_2_fotbha.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646791/DSC02110_4_gk4g10.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646791/DSC02119_2_y4vdwr.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646790/DSC02107_3_ebzzmc.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646790/DSC02112_2_jo7fr3.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646788/DSC02098_3_ashxn1.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646788/DSC02089_3_wwgyvk.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646787/DSC02095_3_g8v1lq.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646785/DSC02067_3_m3gvwp.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646785/DSC02065_3_ayiy0k.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646784/DSC02062_3_udv8qr.jpg" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646781/DSC02059_3_uqs93c.jpg" },
+      { type: "video", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/video/upload/f_auto,q_auto/v1758646781/1756144957780835_aycgvx.mp4" },
+      { type: "image", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646781/DSC01987_6_jjoko2.jpg" },
+      { type: "video", category: "automotive", src: "https://res.cloudinary.com/dftmvb0jt/video/upload/f_auto,q_auto/v1758646778/copy_2529EC35-C780-4539-B28A-3872BE4A9C10_yn3m74.mov" },
 
 
 
@@ -46,25 +45,25 @@ export default function Gallery() {
 
 
 
-    { type: "image", category: "lifestyle", src: "./Afterfilms-1 2.jpeg" },
-    { type: "image", category: "lifestyle", src: "./Afterfilms-2 3.jpeg" },
-    { type: "image", category: "lifestyle", src: "./Afterfilms-3 2.jpeg" },
-    { type: "image", category: "lifestyle", src: "./Afterfilms-4 2.jpeg" },
-    { type: "image", category: "lifestyle", src: "./Afterfilms-6 2.jpeg" },
-    { type: "image", category: "lifestyle", src: "./Afterfilms-7 2.jpeg" },
-    { type: "image", category: "lifestyle", src: "./DSC04827.jpg" },
-    { type: "image", category: "lifestyle", src: "./DSC04830.jpg" },
-    { type: "video", category: "lifestyle", src: "./IMG_3678.mp4" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646762/Afterfilms-1_2_rufa7d.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646762/Afterfilms-2_3_whrm1c.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646766/Afterfilms-3_ezr90s.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646766/Afterfilms-4_2_pfcptp.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646769/Afterfilms-6_ihll4i.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646769/Afterfilms-7_2_d5qbuc.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646803/IMG_7504_rbpnf5.jpg" },
+    { type: "image", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646800/DSC04830_tddeoj.jpg" },
+    { type: "video", category: "lifestyle", src: "https://res.cloudinary.com/dftmvb0jt/video/upload/f_auto,q_auto/v1758646802/IMG_3678_j9jxms.mp4" },
 
    
 
-    { type: "video", category: "events", src: "./Client-8.mp4" },
-    { type: "image", category: "events", src: "./DSC05924.jpg" },
-    { type: "image", category: "events", src: "./IMG_3222.jpg" },
+    { type: "video", category: "events", src: "https://res.cloudinary.com/dftmvb0jt/video/upload/f_auto,q_auto/v1758646815/Client-8_xq7avu.mp4" },
+    { type: "image", category: "events", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646801/IMG_3222_j4cxhk.jpg" },
+    { type: "image", category: "events", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646800/DSC05924_jaqhca.jpg" },
 
-    { type: "image", category: "corporate events", src: "./IMG_3224.jpg" },
-    { type: "image", category: "corporate events", src: "./IMG_3225.jpg" },
-    { type: "image", category: "corporate events", src: "./IMG_3226.jpg" },
+    { type: "image", category: "corporate events", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646801/IMG_3224_feydlf.jpg" },
+    { type: "image", category: "corporate events", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646804/IMG_3225_k7hdeu.jpg" },
+    { type: "image", category: "corporate events", src: "https://res.cloudinary.com/dftmvb0jt/image/upload/f_auto,q_auto/v1758646801/IMG_3226_f8rfjm.jpg" },
 
 
   
@@ -155,39 +154,42 @@ export default function Gallery() {
 
     {/* Modal / Lightbox */}
     <AnimatePresence>
-      {selectedItem && (
-        <motion.div
-          className="fixed inset-0 bg-black/75 backdrop-blur-sm flex items-center justify-center z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setSelectedItem(null)}
-        >
-          <motion.div
-            className="max-w-4xl w-full p-4 rounded-xl bg-[#3e2f56] shadow-2xl"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()} // prevent closing on content click
-          >
-            {selectedItem.type === "image" ? (
-              <img
-                src={selectedItem.src}
-                alt=""
-                className="w-full h-auto rounded-lg  border-[#e8c1c5]/80"
-              />
-            ) : (
-              <video
-                src={selectedItem.src}
-                controls
-                autoPlay
-                className="w-full h-auto rounded-lg border-2 border-[#e8c1c5]/80"
-              />
-            )}
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+  {selectedItem && (
+    <motion.div
+      className="fixed inset-0 bg-black/75 backdrop-blur-sm flex items-center justify-center z-50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setSelectedItem(null)}
+    >
+      <motion.div
+        className="max-w-5xl w-[90%] max-h-[90%] p-4 rounded-xl  shadow-2xl flex items-center justify-center"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()} // prevent closing on content click
+      >
+        {selectedItem.type === "image" ? (
+          <img
+            src={selectedItem.src}
+            alt=""
+            loading="lazy"
+            className="max-w-full max-h-[80vh] object-contain rounded-lg border-2 border-[#e8c1c5]/80"
+          />
+        ) : (
+          <video
+            src={selectedItem.src}
+            controls
+            autoPlay
+            preload="none"
+            className="max-w-full max-h-[80vh] object-contain rounded-lg border-2 border-[#e8c1c5]/80"
+          />
+        )}
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
   </div>
   );
 }
