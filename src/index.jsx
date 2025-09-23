@@ -4,18 +4,70 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Gallery() {
   const items = [
-    { type: "image", category: "automotive", src: "https://picsum.photos/id/1018/400/300" },
-    { type: "video", category: "lifestyle", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", category: "events", src: "https://picsum.photos/id/1015/400/300" },
-    { type: "image", category: "automotive", src: "https://picsum.photos/id/1016/400/300" },
-    { type: "image", category: "lifestyle", src: "https://picsum.photos/id/1018/400/300" },
-    { type: "video", category: "events", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", category: "automotive", src: "https://picsum.photos/id/1015/400/300" },
-    { type: "image", category: "lifestyle", src: "https://picsum.photos/id/1016/400/300" },
-    { type: "image", category: "events", src: "https://picsum.photos/id/1018/400/300" },
-    { type: "video", category: "automotive", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { type: "image", category: "lifestyle", src: "https://picsum.photos/id/1015/400/300" },
-    { type: "image", category: "events", src: "https://picsum.photos/id/1016/400/300" },
+      { type: "video", category: "automotive", src: "./autovideo.mp4" },
+      { type: "video", category: "automotive", src: "./copy_8CC3A021-9579-4D09-B5BD-3E77A68CD59F.mov" },
+      { type: "video", category: "automotive", src: "./copy_2529EC35-C780-4539-B28A-3872BE4A9C10.mov" },
+      { type: "video", category: "automotive", src: "./copy_F8920F0A-EE08-4671-845F-36FCD2120968.mov" },
+      { type: "image", category: "automotive", src: "./DSC01987 6.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02059 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02062 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02065 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02067 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02088 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02095 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02098 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02107 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02110 4.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02112 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02115 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02119 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02136 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02142 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02150 4.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02160 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02162 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02261.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02345.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02372 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02415 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02427 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02432 3.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02452 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02486 4.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02811.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02818.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02913.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02922 2.jpg" },
+      { type: "image", category: "automotive", src: "./DSC02415 2.jpg" },
+
+
+
+
+
+
+
+    { type: "image", category: "lifestyle", src: "./Afterfilms-1 2.jpeg" },
+    { type: "image", category: "lifestyle", src: "./Afterfilms-2 3.jpeg" },
+    { type: "image", category: "lifestyle", src: "./Afterfilms-3 2.jpeg" },
+    { type: "image", category: "lifestyle", src: "./Afterfilms-4 2.jpeg" },
+    { type: "image", category: "lifestyle", src: "./Afterfilms-6 2.jpeg" },
+    { type: "image", category: "lifestyle", src: "./Afterfilms-7 2.jpeg" },
+    { type: "image", category: "lifestyle", src: "./DSC04827.jpg" },
+    { type: "image", category: "lifestyle", src: "./DSC04830.jpg" },
+    { type: "video", category: "lifestyle", src: "./IMG_3678.mp4" },
+
+   
+
+    { type: "video", category: "events", src: "./Client-8.mp4" },
+    { type: "image", category: "events", src: "./DSC05924.jpg" },
+    { type: "image", category: "events", src: "./IMG_3222.jpg" },
+
+    { type: "image", category: "corporate events", src: "./IMG_3224.jpg" },
+    { type: "image", category: "corporate events", src: "./IMG_3225.jpg" },
+    { type: "image", category: "corporate events", src: "./IMG_3226.jpg" },
+
+
+  
   ];
 
   const [filter, setFilter] = useState("all");
@@ -40,7 +92,7 @@ export default function Gallery() {
 
     {/* Filter Buttons */}
     <div className="flex justify-center gap-4 mb-10">
-      {["all", "automotive", "lifestyle", "events"].map((cat, index) => (
+      {["all", "automotive", "lifestyle", "events", "corporate events"].map((cat, index) => (
         <motion.button
           key={cat}
           onClick={() => setFilter(cat)}
