@@ -76,10 +76,11 @@ export default function Gallery() {
     filter === "all" ? items : items.filter((item) => item.category === filter);
 
   return (
-    <div className="min-h-screen bg-[#3e2f56] text-white">
-    <div className="text-center py-10">
+    <div className="min-h-screen bg-[#3e2f56] text-white px-4 sm:px-6 lg:px-12">
+    {/* Heading */}
+    <div className="text-center py-8 sm:py-10">
       <motion.h1
-        className="text-4xl md:text-5xl font-extrabold"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -88,9 +89,9 @@ export default function Gallery() {
         <span className="text-[#e8c1c5]">Gallery</span>
       </motion.h1>
     </div>
-
+  
     {/* Filter Buttons */}
-    <div className="flex justify-center gap-4 mb-10">
+    <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 px-2">
       {["all", "automotive", "lifestyle", "events", "corporate events"].map((cat, index) => (
         <motion.button
           key={cat}
@@ -100,7 +101,7 @@ export default function Gallery() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
-          className={`px-5 py-2 rounded-full border font-medium transition 
+          className={`px-4 sm:px-5 py-2 rounded-full border text-sm sm:text-base font-medium transition 
             ${
               filter === cat
                 ? "bg-[#e8c1c5] text-[#3e2f56] border-transparent shadow-md"
@@ -111,10 +112,10 @@ export default function Gallery() {
         </motion.button>
       ))}
     </div>
-
+  
     {/* Gallery Grid */}
     <motion.div
-      className="px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
       initial="hidden"
       animate="show"
       variants={{
@@ -127,8 +128,8 @@ export default function Gallery() {
       {filteredItems.map((item, index) => (
         <motion.div
           key={index}
-          className="overflow-hidden rounded-xl border-4 border-[#e8c1c5]/70 shadow-lg cursor-pointer"
-          whileHover={{ scale: 1.05 }}
+          className="overflow-hidden rounded-lg sm:rounded-xl border-2 sm:border-4 border-[#e8c1c5]/70 shadow-lg cursor-pointer"
+          whileHover={{ scale: 1.03 }}
           transition={{ type: "spring", stiffness: 200 }}
           variants={{
             hidden: { opacity: 0, y: 30 },
@@ -140,56 +141,57 @@ export default function Gallery() {
             <img
               src={item.src}
               alt=""
-              className="w-full h-60 object-cover"
+              loading="lazy"
+              className="w-full h-52 sm:h-60 md:h-72 object-cover"
             />
           ) : (
             <video
               src={item.src}
-              className="w-full h-60 object-cover"
+              className="w-full h-52 sm:h-60 md:h-72 object-cover"
             />
           )}
         </motion.div>
       ))}
     </motion.div>
-
+  
     {/* Modal / Lightbox */}
     <AnimatePresence>
-  {selectedItem && (
-    <motion.div
-      className="fixed inset-0 bg-black/75 backdrop-blur-sm flex items-center justify-center z-50"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setSelectedItem(null)}
-    >
-      <motion.div
-        className="max-w-5xl w-[90%] max-h-[90%] p-4 rounded-xl  shadow-2xl flex items-center justify-center"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()} // prevent closing on content click
-      >
-        {selectedItem.type === "image" ? (
-          <img
-            src={selectedItem.src}
-            alt=""
-            loading="lazy"
-            className="max-w-full max-h-[80vh] object-contain rounded-lg border-2 border-[#e8c1c5]/80"
-          />
-        ) : (
-          <video
-            src={selectedItem.src}
-            controls
-            autoPlay
-            preload="none"
-            className="max-w-full max-h-[80vh] object-contain rounded-lg border-2 border-[#e8c1c5]/80"
-          />
-        )}
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+      {selectedItem && (
+        <motion.div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedItem(null)}
+        >
+          <motion.div
+            className="w-full max-w-4xl p-2 sm:p-4 rounded-xl shadow-2xl flex items-center justify-center"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {selectedItem.type === "image" ? (
+              <img
+                src={selectedItem.src}
+                alt=""
+                loading="lazy"
+                className="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg border border-[#e8c1c5]/80"
+              />
+            ) : (
+              <video
+                src={selectedItem.src}
+                controls
+                autoPlay
+                preload="none"
+                className="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg border border-[#e8c1c5]/80"
+              />
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   </div>
+  
   );
 }
