@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Loader from "./Components/Loader";
 
 
 export default function Gallery() {
@@ -71,10 +72,23 @@ export default function Gallery() {
 
   const [filter, setFilter] = useState("all");
   const [selectedItem, setSelectedItem] = useState(null);
+ 
+
+  const handleLoaded = (index) => {
+    setLoadingItems((prev) => {
+      const updated = [...prev];
+      updated[index] = false;
+      return updated;
+    });
+  };
 
   const filteredItems =
     filter === "all" ? items : items.filter((item) => item.category === filter);
 
+    const [loadingItems, setLoadingItems] = useState(
+        Array(filteredItems.length).fill(true)
+      );
+      
   return (
     <div className="min-h-screen bg-[#3e2f56] text-white px-4 sm:px-6 lg:px-12">
     {/* Heading */}
@@ -138,17 +152,30 @@ export default function Gallery() {
           onClick={() => setSelectedItem(item)}
         >
           {item.type === "image" ? (
-            <img
-              src={item.src}
-              alt=""
-              loading="lazy"
-              className="w-full h-52 sm:h-60 md:h-72 object-cover"
-            />
+          <div className="relative w-full h-52 sm:h-60 md:h-72">
+          {loadingItems[index] && <Loader />} {/* Show loader */}
+          <img
+            src={item.src}
+            alt=""
+            loading="lazy"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              loadingItems[index] ? "opacity-0" : "opacity-100"
+            }`}
+            onLoad={() => handleLoaded(index)}
+          />
+        </div>
           ) : (
+            <div className="relative w-full h-52 sm:h-60 md:h-72">
+            {loadingItems[index] && <Loader />}
             <video
               src={item.src}
-              className="w-full h-52 sm:h-60 md:h-72 object-cover"
+              className={`w-full h-full object-cover transition-opacity duration-500 ${
+                loadingItems[index] ? "opacity-0" : "opacity-100"
+              }`}
+              preload="none"
+              onLoadedData={() => handleLoaded(index)}
             />
+          </div>
           )}
         </motion.div>
       ))}
