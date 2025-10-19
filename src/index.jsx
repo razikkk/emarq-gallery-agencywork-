@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Loader from "./Components/Loader";
+import { useInView } from "react-intersection-observer";
+
 
 
 export default function Gallery() {
@@ -103,30 +105,32 @@ export default function Gallery() {
         <span className="text-[#e8c1c5]">Gallery</span>
       </motion.h1>
     </div>
-  
+
     {/* Filter Buttons */}
     <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 px-2">
-      {["all", "automotive", "lifestyle", "events", "corporate events"].map((cat, index) => (
-        <motion.button
-          key={cat}
-          onClick={() => setFilter(cat)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          className={`px-4 sm:px-5 py-2 rounded-full border text-sm sm:text-base font-medium transition 
-            ${
-              filter === cat
-                ? "bg-[#e8c1c5] text-[#3e2f56] border-transparent shadow-md"
-                : "bg-white/10 text-white border border-white/30 hover:bg-white/20"
-            }`}
-        >
-          {cat.charAt(0).toUpperCase() + cat.slice(1)}
-        </motion.button>
-      ))}
+      {["all", "automotive", "lifestyle", "events", "corporate events"].map(
+        (cat, index) => (
+          <motion.button
+            key={cat}
+            onClick={() => setFilter(cat)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className={`px-4 sm:px-5 py-2 rounded-full border text-sm sm:text-base font-medium transition 
+              ${
+                filter === cat
+                  ? "bg-[#e8c1c5] text-[#3e2f56] border-transparent shadow-md"
+                  : "bg-white/10 text-white border border-white/30 hover:bg-white/20"
+              }`}
+          >
+            {cat.charAt(0).toUpperCase() + cat.slice(1)}
+          </motion.button>
+        )
+      )}
     </div>
-  
+
     {/* Gallery Grid */}
     <motion.div
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
@@ -139,56 +143,59 @@ export default function Gallery() {
         },
       }}
     >
-      {filteredItems.map((item, index) => (
-        <motion.div
-          key={index}
-          className="overflow-hidden rounded-lg sm:rounded-xl border-2 sm:border-4 border-[#e8c1c5]/70 shadow-lg cursor-pointer"
-          whileHover={{ scale: 1.03 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            show: { opacity: 1, y: 0 },
-          }}
-          onClick={() => setSelectedItem(item)}
-        >
-          {item.type === "image" ? (
-          <div className="relative w-full h-52 sm:h-60 md:h-72">
-          {loadingItems[index] && <Loader />} {/* Show loader */}
-          <img
-            src={item.src}
-            alt=""
-            loading="lazy"
-            className={`w-full h-full object-cover transition-opacity duration-500 ${
-              loadingItems[index] ? "opacity-0" : "opacity-100"
-            }`}
-            onLoad={() => handleLoaded(index)}
-          />
-        </div>
-          ) : (
+      {filteredItems.map((item, index) => {
+        const { ref, inView } = useInView({
+          triggerOnce: true,
+          rootMargin: "150px", // preload before entering
+        });
+
+        return (
+          <motion.div
+            ref={ref}
+            key={index}
+            className="overflow-hidden rounded-lg sm:rounded-xl border-2 sm:border-4 border-[#e8c1c5]/70 shadow-lg cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 200 }}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              show: { opacity: 1, y: 0 },
+            }}
+            onClick={() => inView && setSelectedItem(item)}
+          >
             <div className="relative w-full h-52 sm:h-60 md:h-72">
-            {loadingItems[index] && <Loader />}
-            <video
-              src={item.src}
-              className={`w-full h-full object-cover transition-opacity duration-500 ${
-                loadingItems[index] ? "opacity-0" : "opacity-100"
-              }`}
-              preload="none"
-              onLoadedData={() => handleLoaded(index)}
-            />
-          </div>
-          )}
-        </motion.div>
-      ))}
+              {!inView && <Loader />}
+              {inView ? (
+                item.type === "image" ? (
+                  <img
+                    src={item.src}
+                    alt=""
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                  />
+                ) : (
+                  <video
+                    src={item.src}
+                    preload="none"
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                  />
+                )
+              ) : null}
+            </div>
+          </motion.div>
+        );
+      })}
     </motion.div>
-  
+
     {/* Modal / Lightbox */}
     <AnimatePresence>
       {selectedItem && (
         <motion.div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+        key={selectedItem.src}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 will-change-transform will-change-opacity"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
           onClick={() => setSelectedItem(null)}
         >
           <motion.div
@@ -196,6 +203,7 @@ export default function Gallery() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
           >
             {selectedItem.type === "image" ? (
